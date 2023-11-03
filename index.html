@@ -1,22 +1,21 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
+
 <head>
-    <title>Muse EEG Data Receiver</title>
-    <script src="https://cdn.jsdelivr.net/npm/osc/dist/osc-browser.js"></script>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+
 </head>
+
 <body>
-    <script>
-        const socket = new osc.WebSocketPort({
-            url: 'ws://192.168.1.223:5000', // Replace with your Muse device's address
-            metadata: true
-        });
+    <h1>Testing</h1>
 
-        socket.on("message", function(oscMessage) {
-            console.log("Received Muse EEG data:", oscMessage);
-            // Process the EEG data received from Muse here
-        });
-
-        socket.open();
-    </script>
+    <script type="module" src="/main.js"></script>
 </body>
+
 </html>

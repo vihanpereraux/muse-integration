@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Muse EEG Data Receiver</title>
+    <script src="https://cdn.jsdelivr.net/npm/osc/dist/osc-browser.js"></script>
+</head>
+<body>
+    <script>
+        const socket = new osc.WebSocketPort({
+            url: 'ws://192.168.1.223:5000', // Replace with your Muse device's address
+            metadata: true
+        });
+
+        socket.on("message", function(oscMessage) {
+            console.log("Received Muse EEG data:", oscMessage);
+            // Process the EEG data received from Muse here
+        });
+
+        socket.open();
+    </script>
+</body>
+</html>

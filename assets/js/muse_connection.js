@@ -27,14 +27,20 @@ connectorbutton.addEventListener('click', function(){
   main();
 })
 
-// document.body.addEventListener('mousemove', function(e){
-//   console.log(e.clientX);
-// })
+let mouseXCord = 0;
+document.body.addEventListener('mousemove', function(e){
+  mouseXCord = e.clientX/5;
+})
 
 osc(20, 0.01, 1.1)
 	.kaleid(10)
 	.color(10.83,0.91,0.39)
 	.rotate(0, 0.1)
-	.modulate(o0, () => (accelX * 1000) * 0.0003)
-	.scale(1.01)
-  	.out(o0)
+	// .modulate(o0, () => (accelX * 1000) * 0.0003)
+  .modulate(o0, () => mouseXCord * 0.0003)
+    .modulate(
+      src(o0)
+      .modulate(noise(3),() => mouseXCord * 0.0003)
+    )
+	  .scale(1.01)
+  .out(o0)
